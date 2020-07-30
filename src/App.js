@@ -1,25 +1,58 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route, Link} from 'react-router-dom' 
 
+import SignIn from "./pages/Signin"
+import SignUp from "./pages/Signup"
+import Links from "./pages/Manage/Links"
+import CreateLink from "./pages/Manage/Links/Create"
+import EditLink from "./pages/Manage/Links/Edit"
+import Home from "./pages/Home"
+
+
+
 const App = () => {
   return (
     <BrowserRouter>
       <div>
         <nav>
-          <ul>
-            <li> <Link to="/sign-in"> Sign in</Link> </li>
-            <li> <Link to="/sign-up"> Sign up</Link> </li>
+          <ul className="list-group list-group-horizontal">
+            <li className="list-group-item"> <Link to="/sign-in"> Sign in</Link> </li>
+            <li className="list-group-item"> <Link to="/sign-up"> Sign up</Link> </li>
+            <li className="list-group-item"> <Link to="/manage/links"> links</Link> </li>
+            <li className="list-group-item"> <Link to="/manage/links/create"> create</Link> </li>
+            <li className="list-group-item"> <Link to="/manage/links/edit"> Edit</Link> </li>
+
           </ul>
         </nav>
         <Switch>
-          
+
           <Route path="/sign-in">
-            <h1>SignIn</h1>
+            <SignIn />
           </Route>
 
           <Route path="/sign-up">
-            <h1>Signup</h1>
+            <SignUp />
           </Route>
+
+          <Route path="/manage/links/create">
+            <CreateLink />
+          </Route>
+
+          <Route path="/manage/links/edit">
+            <EditLink />
+          </Route>
+
+          <Route path="/manage/links">
+            <Links />
+          </Route>
+
+          <Route path="/">
+            <Home />
+          </Route>
+
+       
+
+          
 
         </Switch>
       </div>
