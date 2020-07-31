@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import {signUpAction} from './SignupActions'
 
 const SignUp = (props) => {
 
-    const {signUpAction } = props;
+    const {signUpAction, account } = props;
 
     const HandleSignUp = (e) => {
         e.preventDefault();
@@ -16,6 +16,10 @@ const SignUp = (props) => {
 
 
         signUpAction(data);
+    }
+
+    if(account) {
+        return <Redirect to="/manage/links" />
     }
 
     return(
