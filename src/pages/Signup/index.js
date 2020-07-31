@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import {signUpAction} from '../../actions/accountActions'
+import { getFormData } from '../../helpers/form';
 
 const SignUp = (props) => {
 
@@ -9,8 +10,7 @@ const SignUp = (props) => {
 
     const HandleSignUp = (e) => {
         e.preventDefault();
-        const formData = new FormData(e.target)
-        const data = Object.fromEntries(formData)
+        const data = getFormData(e);
 
         signUpAction(data);
     }
