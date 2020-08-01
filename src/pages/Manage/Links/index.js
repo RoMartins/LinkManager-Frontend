@@ -11,7 +11,6 @@ const Links = ( {LinkList, links}) => {
         LinkList()
     }, [LinkList])
 
-    console.log(links);
     return( 
         
         <Layout>

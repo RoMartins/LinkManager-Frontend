@@ -1,4 +1,4 @@
-import {LINK_CREATE, LINK_LIST, LINK_ONE} from '../actions/LinkActions'
+import {LINK_CREATE, LINK_LIST, LINK_ONE, LINK_UPDATE } from '../actions/LinkActions'
 
 
 const initialState = {
@@ -21,6 +21,12 @@ export default function(state = initialState, action) {
             return {...state, links}
         }
         case LINK_ONE : {
+            const response = (payload) ? payload.data : null ;
+            const link =  (response) ? response.data : null ;
+
+            return {...state, link}
+        }
+        case LINK_UPDATE : {
             const response = (payload) ? payload.data : null ;
             const link =  (response) ? response.data : null ;
 
