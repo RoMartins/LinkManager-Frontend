@@ -11,10 +11,10 @@ import { getFormData } from '../../helpers/form';
 const SignIn = (props) => {
     const {account, signInAction} = props;
 
+    
     if(account) {
         return <Redirect to="/manage/links" />
     }
-
 
     const HandlerLogin = (e) => { 
         e.preventDefault();
@@ -24,7 +24,6 @@ const SignIn = (props) => {
         signInAction(data)
     }
 
-    console.log('***sign', account)
     return(
         <div className="container h-100 pt-5">
             <h1>Sign In</h1>
