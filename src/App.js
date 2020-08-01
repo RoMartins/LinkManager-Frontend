@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {BrowserRouter, Switch, Route, Link} from 'react-router-dom' 
 
 import SignIn from "./pages/Signin"
@@ -7,10 +7,16 @@ import Links from "./pages/Manage/Links"
 import CreateLink from "./pages/Manage/Links/Create"
 import EditLink from "./pages/Manage/Links/Edit"
 import Home from "./pages/Home"
+import { checkLogged } from './actions/accountActions';
+import { connect } from 'react-redux';
 
 
+const App = ({checkLogged}) => {
+  useEffect(()=> {
+    checkLogged();
+  }, [checkLogged])
 
-const App = () => {
+  
   return (
     <BrowserRouter>
       <div>
@@ -62,4 +68,9 @@ const App = () => {
   )
 }
 
-export default App;
+
+const mapStateToProps = (state) => {
+  return { account: state.account.account }
+}
+
+export default connect(mapStateToProps, {checkLogged})(App) ; 
