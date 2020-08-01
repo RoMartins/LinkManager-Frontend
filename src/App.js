@@ -16,7 +16,7 @@ const App = ({checkLogged}) => {
     checkLogged();
   }, [checkLogged])
 
-  
+
   return (
     <BrowserRouter>
       <div>
@@ -44,7 +44,7 @@ const App = ({checkLogged}) => {
             <CreateLink />
           </Route>
 
-          <Route path="/manage/links/edit">
+          <Route path="/manage/links/edit/:id">
             <EditLink />
           </Route>
 

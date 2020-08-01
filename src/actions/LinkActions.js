@@ -2,6 +2,7 @@ import {api, apiGet} from '../helpers/api'
 
 export const LINK_CREATE = 'LINK_CREATE'
 export const LINK_LIST = 'LINK_LIST'
+export const LINK_ONE = 'LINK_LINK_ONELIST'
 
 export const LinkCreate = (data) => {
     const isSocial = data.isSocial ? true : false ;
@@ -15,4 +16,11 @@ export const LinkList = () => {
     const payload = apiGet('/link', );
     
     return {type: LINK_LIST, payload}
+}
+
+
+export const LinkOne = (id) => {
+    const payload = apiGet(`/link/${id}` );
+    
+    return {type: LINK_ONE, payload}
 }
