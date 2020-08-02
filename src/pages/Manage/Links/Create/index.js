@@ -19,10 +19,7 @@ const Create = ({LinkCreate, link}) => {
         LinkCreate(data)
     }
 
-    if(link) {
-        return <Redirect to="/manage/links" />
-    }
-
+    
     return (
 
         <Layout>

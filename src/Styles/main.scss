@@ -20,3 +20,18 @@ form {
         box-shadow: none;
     }
 }
+
+.border-transparent{
+    border-color: rgba(0,0,0,0) !important;
+}
+
+.modal-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.shadow-bold {
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.5) !important;
+}
