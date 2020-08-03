@@ -4,6 +4,8 @@ export const SIGN_UP = 'SIGN_UP'
 export const SIGN_IN = 'SIGN_IN'
 export const SIGN_OUT = 'SIGN_OUT'
 export const USER_LOGGED = 'USER_LOGGED'
+export const SIGN_FAIL = 'SIGN_FAIL'
+
 
 
 
@@ -14,10 +16,15 @@ export const signUpAction = (data) => {
 }
 
 
-export const signInAction = (data) => {
-    const payload = api('/auth/sign-in' , data)
+export const signInAction = async (data) => {
+    const payload = await api('/auth/sign-in' , data)
 
-    return {type: SIGN_IN , payload}
+    if(payload == 'Credenciais inválidas') {
+        return {type: SIGN_FAIL ,payload} }
+    else{
+        return {type: SIGN_IN , payload}
+    }
+    
 } 
 
 export const signOut = (data) => {

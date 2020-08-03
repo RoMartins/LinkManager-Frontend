@@ -1,6 +1,6 @@
 import { setAccount, setToken, setRefreshToken ,removeAccount, removeToken,removeRefreshToken, getAccount} from '../helpers/account';
 
-import {SIGN_IN, SIGN_UP, SIGN_OUT, USER_LOGGED } from '../actions/accountActions'
+import {SIGN_IN, SIGN_UP, SIGN_OUT, USER_LOGGED, SIGN_FAIL } from '../actions/accountActions'
 
 const initialState = {
     account: null,
@@ -24,6 +24,8 @@ export default function(state = initialState, action) {
             if(token) setToken(token)
             if(refreshToken) setRefreshToken(refreshToken)
 
+           
+
             return{...state, account }
         case SIGN_OUT: {
             removeToken();
@@ -35,9 +37,16 @@ export default function(state = initialState, action) {
             case USER_LOGGED :{
                 const account = getAccount();
                 
-            return {...initialState, account}
+            return {...state, account}
 
-            }   
+        }   
+            case SIGN_FAIL :{
+                const erro = payload
+                console.log('**',erro)
+
+            return {...state, erro}
+
+        }   
 
         default:
             return state ;   

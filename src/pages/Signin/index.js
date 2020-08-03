@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import {signInAction} from '../../actions/accountActions'
 import { getFormData } from '../../helpers/form';
+import ErroMessage from '../components/ErrorsMessage';
 
 
 
 
-const SignIn = (props) => {
-    const {account, signInAction} = props;
+const SignIn = ({account, signInAction, erro}) => {
+    //const {account, signInAction, erro} = props;
 
-    
     if(account) {
         return <Redirect to="/manage/links" />
     }
@@ -23,9 +23,11 @@ const SignIn = (props) => {
 
         signInAction(data)
     }
-
+    
     return(
         <div className="container h-100 pt-5">
+        
+        
             <h1>Sign In</h1>
             <div className="d-flex flex column h-100">
                 <form onSubmit={HandlerLogin}>
@@ -49,10 +51,15 @@ const SignIn = (props) => {
             </div>
         </div>
     )
+
+ 
 }
 
+
+
 const mapStateToProps = (state) => {
-    return { account: state.account.account }
+    return { account: state.account.account,
+            erro : state.account.erro}
 }
 
 export default connect(mapStateToProps, {signInAction})(SignIn) ; 

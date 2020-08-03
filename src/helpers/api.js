@@ -15,13 +15,19 @@ export const getHeaders = () => {
     }
 }
 
-export const api = (path, data = {}) => {
-    
-    const url = getApiUrl(path);
+export const api =  (path, data = {}) => {
+ 
+        const url = getApiUrl(path);
     const options = {
         headers: getHeaders(),
     };
     return axios.post(url, data, options)
+    .then(response =>  response)
+    .catch(Error => {
+        const erro = Error.response.data.message
+        return erro
+
+    })
 }
 
 export const apiPut = (path, data = {}) => {
